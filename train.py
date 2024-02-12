@@ -33,10 +33,10 @@ from convert_to_moe import createGPT2MoE
 # -----------------------------------------------------------------------------
 # default config values designed to train a gpt2 (124M) on OpenWebText
 # I/O
-out_dir = '/home/sm6re/.cache/gpt2data/out/'
-eval_interval = 2000
+out_dir = "out/"#'/home/sm6re/.cache/gpt2data/out/'
+eval_interval = 2#2000
 log_interval = 1
-eval_iters = 200
+eval_iters = 2#200
 eval_only = False # if True, script exits right after the first eval
 always_save_checkpoint = True # if True, always save a checkpoint after each eval
 init_from = 'gpt2' # 'scratch' or 'resume' or 'gpt2*'
@@ -58,7 +58,7 @@ dropout = 0.0 # for pretraining 0 is good, for finetuning try 0.1+
 bias = False # do we use bias inside LayerNorm and Linear layers?
 # adamw optimizer
 learning_rate = 6e-4 # max learning rate
-max_iters = 600000 # total number of training iterations
+max_iters = 2#600000 # total number of training iterations
 weight_decay = 1e-1
 beta1 = 0.9
 beta2 = 0.95
@@ -114,7 +114,7 @@ ptdtype = {'float32': torch.float32, 'bfloat16': torch.bfloat16, 'float16': torc
 ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
 
 # poor man's data loader
-data_dir = '/home/sm6re/.cache/gpt2data/'
+data_dir = ''#/home/sm6re/.cache/gpt2data/'
 train_data = np.memmap(os.path.join(data_dir, 'train.bin'), dtype=np.uint16, mode='r')
 val_data = np.memmap(os.path.join(data_dir, 'val.bin'), dtype=np.uint16, mode='r')
 def get_batch(split):
